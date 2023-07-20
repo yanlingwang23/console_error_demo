@@ -21,7 +21,36 @@
   </table>
   
   <script src="console-error.js"></script>
-  <script src="console-type-error.js"></script>
-  <script src="console-syntax-error.js"></script>
+  <script>
+    // TypeError: 'x' is not iterable
+    const obj = { France: "Paris", England: "London" };
+    for (const p of obj) {
+      console.log(p);
+    }
+  </script>
+  <script>
+    // TypeError: cannot use 'in' operator to search for 'Hello' in 'Hello World'
+    "Hello" in "Hello World";
+  </script>
+  <script>
+    // TypeError: can't define property "x": Object is not extensible
+    const zoo = {};
+    Object.preventExtensions(zoo);
+    Object.defineProperty(zoo, "x", { value: "foo" });
+  </script>
+  <script>
+    // TypeError: Right-hand side of 'instanceof' is not an object
+    function Foo() {}
+    const f = Foo(); 
+    const x = new Foo();
+    x instanceof f;
+  </script>
+  <script>
+    // SyntaxError: "use strict" not allowed in function with default parameter
+    function sum(a = 1, b = 2) {
+        "use strict";
+        return a + b;
+    }
+  </script>
 </body>
 </html>
